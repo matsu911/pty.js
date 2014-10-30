@@ -24,27 +24,7 @@
 #include <sys/ioctl.h>
 #include <fcntl.h>
 
-/* forkpty */
-/* http://www.gnu.org/software/gnulib/manual/html_node/forkpty.html */
-#if defined(__GLIBC__) || defined(__CYGWIN__)
-#include <pty.h>
-#elif defined(__APPLE__) || defined(__OpenBSD__) || defined(__NetBSD__)
-/**
- * From node v0.10.28 (at least?) there is also a "util.h" in node/src, which would confuse
- * the compiler when looking for "util.h".
- */
-#if NODE_VERSION_AT_LEAST(0, 10, 28)
-#include </usr/include/util.h>
-#else
 #include <util.h>
-#endif
-#elif defined(__FreeBSD__)
-#include <libutil.h>
-#elif defined(__sun)
-#include <stropts.h> /* for I_PUSH */
-#else
-#include <pty.h>
-#endif
 
 #include <termios.h> /* tcgetattr, tty_ioctl */
 
