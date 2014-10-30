@@ -26,6 +26,10 @@
 
 #include <util.h>
 
+int	openpty(int *, int *, char *, struct termios *,
+		     struct winsize *);
+pid_t	forkpty(int *, char *, struct termios *, struct winsize *);
+
 #include <termios.h> /* tcgetattr, tty_ioctl */
 
 /* environ for execvpe */
